@@ -4,7 +4,7 @@ const Dashboard = () => {
       <div className="flex w-screen h-screen">
         <div className="basis-3/5 border border-white flex flex-col">
           <div className="border-white border text-4xl p-8">
-            Trcak your Mood. Optimize your life
+            Track your Mood. Optimize your life
           </div>
           <div className="text-xl pl-8 py-6">Activity History</div>
           <div className="basis-2/5 border border-white rounded-xl bg-[#151515] h-[50%] ml-8">
@@ -23,15 +23,15 @@ const Dashboard = () => {
           <div className="text-2xl flex flex-col basis-1/2">
             <div className="border border-white mb-6">Overall Analysis</div>
             <div className="gap-10 rounded-xl flex h-full w-[95%]">
-              <div className="border rounded-xl border-white bg-[#151515] basis-1/2">
+              <div className="shadow-xl border rounded-xl border-white bg-[#151515] basis-1/2">
                 Index
               </div>
-              <div className="border rounded-xl w-[50%] border-white bg-[#151515]">
+              <div className="border shadow-xl rounded-xl w-[50%] border-white bg-[#151515]">
                 Calendar
               </div>
             </div>
           </div>
-          <div className="mt-10 rounded-xl border h-[42%] border-white bg-[#151515] w-[95%]">
+          <div className="mt-10 shadow-xl rounded-xl border h-[42%] border-white bg-[#151515] w-[95%]">
             Analysis
           </div>
         </div>
