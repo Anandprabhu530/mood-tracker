@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="bg-[#e5e5e5]">
       <div className="flex h-screen p-6">
-        <div className="flex-col p-20 basis-3/5 border border-white flex items-center justify-center text-7xl text-black font-semibold">
+        <div className="flex-col p-20 basis-3/5 flex items-center justify-center text-7xl text-black font-semibold">
           <div>Don't just weather your emotions, chart them.</div>
           <div className="text-lg pr-10 pt-10">
             Navigating life's emotional currents can feel like riding a wave in
@@ -39,12 +39,13 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="border border-white basis-2/5">
+        <div className="flex-col basis-3/5 pr-10 flex justify-center items-center">
           <Image
             src="/Background_cropped.png"
             alt="Cups"
             width={1080}
             height={1080}
+            className="shadow-2xl"
           />
         </div>
       </div>
