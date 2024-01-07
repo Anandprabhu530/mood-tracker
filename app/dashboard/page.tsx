@@ -32,7 +32,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="mt-10 shadow-xl rounded-xl  h-[42%]  bg-[#151515] w-[95%]">
-            Analysis
+            Total mood analysis
           </div>
         </div>
       </div>
