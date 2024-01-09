@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -19,23 +20,25 @@ export default function Home() {
           </div>
           <div className="flex pt-6 w-full">
             <button className=" bg-black border border-white rounded-full py-2 px-4 text-white text-lg">
-              <div className="flex gap-4 items-center justify-center">
-                Get Started
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-8 h-8"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </div>
+              <Link href="/dashboard">
+                <div className="flex gap-4 items-center justify-center">
+                  Get Started
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-8 h-8"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </div>
+              </Link>
             </button>
           </div>
         </div>

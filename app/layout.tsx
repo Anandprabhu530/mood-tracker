@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { dark } from "@clerk/themes";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -18,8 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }

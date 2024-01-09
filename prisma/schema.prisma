@@ -6,6 +6,38 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  clerkId   String    @unique
+  email     String    @unique
+  entries   Entries[]
+}
+
+model Entries {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  content   String    @db.Text
+  UserId    String
+  user      User      @relation(fields: [UserId], references: [id])
+  analysis  Analysis?
+
+  @@index([UserId])
+}
+
+model Analysis {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  entryId   String
+  entry     Entries  @relation(fields: [entryId], references: [id])
+
+  @@unique([entryId])
 }
