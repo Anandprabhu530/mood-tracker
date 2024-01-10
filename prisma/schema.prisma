@@ -28,7 +28,6 @@ model Entries {
   UserId    String
   user      User      @relation(fields: [UserId], references: [id])
   analysis  Analysis?
-
   @@index([UserId])
 }
 
@@ -38,6 +37,5 @@ model Analysis {
   updatedAt DateTime
   entryId   String
   entry     Entries  @relation(fields: [entryId], references: [id])
-
   @@unique([entryId])
 }
