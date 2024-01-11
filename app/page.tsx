@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { auth } from "@clerk/nextjs";
 
-export default function Home() {
+export default async function Home() {
+  const { UserId } = await auth();
+  let href = UserId ? "/dashboard" : "/new-user";
+
   return (
     <div className="bg-[#e5e5e5]">
       <div className="flex h-screen p-6">
@@ -20,7 +24,7 @@ export default function Home() {
           </div>
           <div className="flex pt-6 w-full">
             <button className=" bg-black border border-white rounded-full py-2 px-4 text-white text-lg">
-              <Link href="/dashboard">
+              <Link href={href}>
                 <div className="flex gap-4 items-center justify-center">
                   Get Started
                   <svg
