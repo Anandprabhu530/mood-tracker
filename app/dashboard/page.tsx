@@ -1,4 +1,23 @@
-const Dashboard = () => {
+import { prisma } from "@/utils/db";
+import { finduserbyIb } from "@/utils/finduser";
+
+const getallentry = async () => {
+  const user = await finduserbyIb();
+  const data = await prisma.entries.findMany({
+    where: {
+      id: user?.id,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return data;
+};
+
+const Dashboard = async () => {
+  const entries = await getallentry();
+  console.log(entries);
+
   return (
     <div>
       <div className="flex w-screen h-screen">
