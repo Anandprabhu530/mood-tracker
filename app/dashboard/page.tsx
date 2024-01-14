@@ -1,5 +1,6 @@
 import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser";
+import NewEntry from "../components/NewEntry";
 
 const getallentry = async () => {
   const user = await finduserbyIb();
@@ -16,7 +17,6 @@ const getallentry = async () => {
 
 const Dashboard = async () => {
   const entries = await getallentry();
-  console.log(entries);
 
   return (
     <div>
@@ -26,12 +26,13 @@ const Dashboard = async () => {
             Track your Mood. Optimize your life
           </div>
           <div className="text-xl pl-8 py-6">Activity History</div>
-          <div className="basis-2/5   rounded-xl bg-[#151515] h-[50%] ml-8">
-            Chart
+          <div className="basis-2/5 flex flex-col rounded-xl bg-[#151515] h-[50%] ml-8">
+            Add Notes
+            <NewEntry />
           </div>
           <div className="basis-2/5 flex h-[50%] mt-10 ml-8 gap-10">
             <div className="basis-1/2 rounded-xl   h-[90%] bg-[#151515]">
-              Add Notes
+              Charts
             </div>
             <div className="basis-1/2 rounded-xl  h-[90%]  bg-[#151515]">
               Prevoius Notes
