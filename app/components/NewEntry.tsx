@@ -1,14 +1,22 @@
 "use client";
 
+import { createNewEntry } from "@/utils/createNewEntry";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const NewEntry = () => {
+  const router = useRouter();
   const [Inputdata, setInputdata] = useState("");
-  const handleclick = () => {
+
+  const handleclick = async () => {
     if (Inputdata.length < 20) {
       console.log("Enter more Data");
+      return;
     }
+    const data = await createNewEntry();
+    router.push(`/dashboard/${data.id}`);
   };
+
   return (
     <div className="w-full h-[60%]">
       <textarea
