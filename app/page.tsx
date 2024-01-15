@@ -7,7 +7,7 @@ export default async function Home() {
   let href = UserId ? "/dashboard" : "/new-user";
 
   return (
-    <div className="bg-[#e5e5e5]">
+    <div className="bg-[#e5e5e5] font-poppins">
       <div className="flex h-screen p-6">
         <div className="flex-col p-20 basis-3/5 flex items-center justify-center text-7xl text-black font-semibold">
           <div>Don't just weather your emotions, chart them.</div>
