@@ -6,7 +6,7 @@ export const POST = async () => {
     const user = await finduserbyIb();
     const entry = await prisma.entries.create({
         data: {
-            id: user?.id as string,
+            UserId: user?.id as string,
             content: "Sample Content"
         }
     })

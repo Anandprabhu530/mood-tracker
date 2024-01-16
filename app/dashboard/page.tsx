@@ -2,12 +2,13 @@ import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser";
 import NewEntry from "../components/NewEntry";
 import Entrymap from "../components/Entrymap";
+import Link from "next/link";
 
 const getallentry = async () => {
   const user = await finduserbyIb();
   const data = await prisma.entries.findMany({
     where: {
-      id: user?.id,
+      UserId: user?.id,
     },
     orderBy: {
       createdAt: "desc",
@@ -26,11 +27,14 @@ const Dashboard = async () => {
         <div className="  text-4xl p-8">
           Track your Mood. Optimize your life
         </div>
-        <div className="border border-white rounded-xl shadow-xl bg-black grid gap-8 grid-cols-3">
+        <div className="border border-white rounded-xl shadow-xl bg-black grid gap-8 grid-cols-3 p-6">
           <NewEntry />
-          {entries.map((entry) => {
-            <Entrymap entry={entry} key={entry.id} />;
-          })}
+
+          {entries.map((entry) => (
+            <Link href={`/dashboard/${entry.id}`} key={entry.id}>
+              <Entrymap entry={entry} />
+            </Link>
+          ))}
         </div>
       </div>
     </div>

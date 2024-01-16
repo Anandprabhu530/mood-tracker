@@ -3,9 +3,12 @@ const fullpath = (path: string) => {
 }
 
 export const createNewEntry = async () => {
-    const res = await fetch(fullpath(`/api/moods`), {
-        method: "POST"
-    })
+    const res = await fetch(
+        new Request(fullpath(`/api/moods`), {
+            method: "POST"
+        })
+    )
+
     if (res.ok) {
         const response = await res.json()
         return response.data
