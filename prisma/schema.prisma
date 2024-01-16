@@ -28,7 +28,7 @@ model Entries {
   UserId    String
   user      User      @relation(fields: [UserId], references: [id])
   analysis  Analysis?
-  @@index([UserId])
+  @@unique([UserId,id])
 }
 
 model Analysis {
