@@ -21,21 +21,14 @@ const Dashboard = async () => {
   const entries = await getallentry();
 
   return (
-    <div className="h-screen w-screen flex font-poppins">
-      <div className="basis-1/6 border border-white">Hello</div>
-      <div className="flex flex-col basis-5/6 border border-red-500 p-6">
-        <div className="  text-4xl p-8">
-          Track your Mood. Optimize your life
-        </div>
-        <div className="border border-white rounded-xl shadow-xl bg-black grid gap-8 grid-cols-3 p-6">
-          <NewEntry />
-
-          {entries.map((entry) => (
-            <Link href={`/dashboard/${entry.id}`} key={entry.id}>
-              <Entrymap entry={entry} />
-            </Link>
-          ))}
-        </div>
+    <div className="font-poppins">
+      <div className="border border-white rounded-xl shadow-xl bg-black grid gap-8 grid-cols-3 p-6">
+        <NewEntry />
+        {entries.map((entry) => (
+          <Link href={`/dashboard/${entry.id}`} key={entry.id}>
+            <Entrymap entry={entry} />
+          </Link>
+        ))}
       </div>
     </div>
   );
