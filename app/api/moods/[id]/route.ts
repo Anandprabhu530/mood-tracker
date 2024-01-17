@@ -1,5 +1,6 @@
 import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser"
+import { NextResponse } from "next/server";
 
 export const PATCH = async (request: Request, { params }) => {
     const { content } = await request.json();
@@ -15,4 +16,5 @@ export const PATCH = async (request: Request, { params }) => {
             content,
         }
     })
+    return NextResponse.json({ data: entryedit })
 }
