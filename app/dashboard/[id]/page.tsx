@@ -18,7 +18,7 @@ const fetchentry = async (id) => {
 const Editingpage = async ({ params }) => {
   const entry = await fetchentry(params.id);
   return (
-    <div className="text-white">
+    <div className="text-white w-full h-full">
       <EntryEditor entry={entry} />
     </div>
   );
