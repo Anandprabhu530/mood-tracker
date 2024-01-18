@@ -14,7 +14,7 @@ const fetchentry = async (id) => {
     },
   });
 
-  await analyze_data("What is an LLM");
+  await analyze_data("What is an LLm");
   return entry;
 };
 
