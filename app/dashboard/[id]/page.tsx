@@ -1,4 +1,5 @@
 import EntryEditor from "@/app/components/EntryEditor";
+import { analyze_data } from "@/utils/ai";
 import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser";
 
@@ -12,6 +13,8 @@ const fetchentry = async (id) => {
       },
     },
   });
+
+  await analyze_data("What is an LLM");
   return entry;
 };
 
