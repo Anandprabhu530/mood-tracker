@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
         </div>
       </div>
       <div className="ml-[350px] h-full w-[calc(100vw-350px)] ">
-        <div className="h-full py-8">{children}</div>
+        <div className="h-full pt-8">{children}</div>
       </div>
     </div>
   );
