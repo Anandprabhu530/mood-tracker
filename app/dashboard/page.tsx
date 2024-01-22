@@ -13,6 +13,9 @@ const getallentry = async () => {
     orderBy: {
       createdAt: "desc",
     },
+    include: {
+      analysis: true,
+    },
   });
   return data;
 };

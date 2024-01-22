@@ -34,12 +34,13 @@ model Entries {
 model Analysis {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @default(now())
   entryId   String
-  entry     Entries  @relation(fields: [entryId], references: [id])
+  entry     Entries  @relation(fields: [entryId], references: [id] ,onDelete: Cascade)
   @@unique([entryId])
   mood String
-  summary String
   subject String
   negative Boolean
+  summary String
 }
+

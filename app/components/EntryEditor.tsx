@@ -7,12 +7,8 @@ import { boolean } from "zod";
 const EntryEditor = ({ entry }) => {
   const [data, setData] = useState(entry.content);
   const [isLoading, setIsloading] = useState(false);
-  const [realentry, setRealentry] = useState({
-    mood: "",
-    summary: "",
-    negative: boolean,
-    subject: "",
-  });
+  const [realentry, setRealentry] = useState(entry.analysis);
+
   useAutosave({
     data: data,
     onSave: async (_value) => {

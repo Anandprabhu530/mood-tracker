@@ -12,12 +12,16 @@ const fetchentry = async (id) => {
         id,
       },
     },
+    include: {
+      analysis: true,
+    },
   });
   return entry;
 };
 
 const Editingpage = async ({ params }) => {
   const entry = await fetchentry(params.id);
+
   return (
     <div className="text-white w-full h-full">
       <EntryEditor entry={entry} />
