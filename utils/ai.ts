@@ -1,25 +1,35 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai"
 import { StructuredOutputParser } from "langchain/output_parsers";
-import { ChatPromptTemplate } from "langchain/prompts";
+import { PromptTemplate } from "langchain/prompts";
+import { RunnableSequence } from "langchain/runnables";
 import { z } from "zod"
 
 const parser = StructuredOutputParser.fromZodSchema(
     z.object({
-        mood: z.string().describe("what is the mood of the data"),
-        summary: z.string().describe("What is the summary of the input"),
-        Sentiment: z.string().describe("What is the sentiment of the input"),
-        Negativity: z.boolean().describe("Negative or not"),
+        mood: z
+            .string()
+            .describe('the mood of the person who wrote the journal entry.'),
+        subject: z.string().describe('the subject of the journal entry.'),
+        negative: z
+            .boolean()
+            .describe(
+                'is the journal entry negative? (i.e. does it contain negative emotions?).'
+            ),
+        summary: z.string().describe('quick summary of the entire entry.'),
     })
 );
 
 export const analyze_data = async (input) => {
-    const model = new ChatGoogleGenerativeAI({ modelName: "gemini-pro", maxOutputTokens: 2048 })
-    const prompt = ChatPromptTemplate.fromMessages([["system", "You are a mood analyzer. Analyze and say the output."],
-    ["user", "{input}"],])
-    const chain = prompt.pipe(model)
-    const answer = await chain.invoke({
-        question: "What is the capital of France?",
+    const chain = RunnableSequence.from([
+        PromptTemplate.fromTemplate(
+            "Answer the users question as best as possible.\n{format_instructions}\n{question}"
+        ),
+        new ChatGoogleGenerativeAI({ modelName: "gemini-pro", maxOutputTokens: 2048 }),
+        parser,
+    ]);
+    const response = await chain.invoke({
+        question: input,
         format_instructions: parser.getFormatInstructions(),
     });
-    console.log(answer);
+    return response
 } 

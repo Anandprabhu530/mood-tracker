@@ -13,10 +13,6 @@ const fetchentry = async (id) => {
       },
     },
   });
-
-  await analyze_data(
-    "Generate me a list of mood analysis with the objects mood, negativity, Summary and subject from a given sentence."
-  );
   return entry;
 };
 

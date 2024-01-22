@@ -1,3 +1,4 @@
+import { analyze_data } from "@/utils/ai";
 import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser"
 import { NextResponse } from "next/server";
@@ -16,5 +17,6 @@ export const PATCH = async (request: Request, { params }) => {
             content,
         }
     })
-    return NextResponse.json({ data: entryedit })
+    const analyze = await analyze_data(entryedit.content)
+    return NextResponse.json({ data: analyze })
 }

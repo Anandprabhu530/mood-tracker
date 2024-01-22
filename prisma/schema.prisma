@@ -38,4 +38,8 @@ model Analysis {
   entryId   String
   entry     Entries  @relation(fields: [entryId], references: [id])
   @@unique([entryId])
+  mood String
+  summary String
+  subject String
+  negative Boolean
 }
