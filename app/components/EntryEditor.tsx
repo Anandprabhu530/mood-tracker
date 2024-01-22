@@ -2,18 +2,23 @@
 import { updateEntry } from "@/utils/createNewEntry";
 import { useState } from "react";
 import { useAutosave } from "react-autosave";
+import { boolean } from "zod";
 
 const EntryEditor = ({ entry }) => {
   const [data, setData] = useState(entry.content);
   const [isLoading, setIsloading] = useState(false);
-
+  const [realentry, setRealentry] = useState({
+    mood: "",
+    summary: "",
+    negative: boolean,
+    subject: "",
+  });
   useAutosave({
     data: data,
     onSave: async (_value) => {
       setIsloading(true);
       const newentry = await updateEntry(entry.id, _value);
-      console.log(newentry);
-
+      setRealentry(newentry);
       setIsloading(false);
     },
   });
@@ -35,11 +40,13 @@ const EntryEditor = ({ entry }) => {
             <div className="text-2xl font-semibold  pb-8 border-b-[1px] p-8">
               Analysis of the day
             </div>
-            <div className="text-lg p-8 border-b-[1px]">Summary:</div>
-            <div className="text-lg p-8 border-b-[1px]">Sentiment:</div>
-            <div className="text-lg p-8 border-b-[1px]">Mood:</div>
+            <div className="text-lg p-8 border-b-[1px]">{`Mood : ${realentry.mood}`}</div>
+            <div className="text-lg p-8 border-b-[1px]">{`Subject : ${realentry.subject}`}</div>
             <div className="text-lg p-8 border-b-[1px]">
-              Postive or Negative:
+              {`Summary : ${realentry.summary}`}
+            </div>
+            <div className="text-lg p-8 border-b-[1px]">
+              Negative : {realentry.negative ? "True" : "False"}
             </div>
           </div>
         </div>
