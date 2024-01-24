@@ -10,11 +10,12 @@ const createNewUser = async () => {
       clerkId: user.id as string,
     },
   });
+  console.log("added");
 
   if (!match) {
     const addvalue = await prisma.user.create({
       data: {
-        clerkId: user.id,
+        clerkId: user?.id,
         email: user?.emailAddresses[0].emailAddress,
       },
     });

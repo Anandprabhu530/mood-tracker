@@ -15,6 +15,7 @@ const EntryEditor = ({ entry }) => {
       setIsloading(true);
       const newentry = await updateEntry(entry.id, _value);
       setRealentry(newentry);
+      console.log(realentry);
       setIsloading(false);
     },
   });
@@ -36,14 +37,14 @@ const EntryEditor = ({ entry }) => {
             <div className="text-2xl font-semibold  pb-8 border-b-[1px] p-8">
               Analysis of the day
             </div>
-            <div className="text-lg p-8 border-b-[1px]">{`Mood : ${realentry.mood}`}</div>
+            {/* <div className="text-lg p-8 border-b-[1px]">{`Mood : ${realentry.mood}`}</div>
             <div className="text-lg p-8 border-b-[1px]">{`Subject : ${realentry.subject}`}</div>
             <div className="text-lg p-8 border-b-[1px]">
               {`Summary : ${realentry.summary}`}
             </div>
             <div className="text-lg p-8 border-b-[1px]">
               Negative : {realentry.negative ? "True" : "False"}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

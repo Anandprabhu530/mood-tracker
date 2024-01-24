@@ -1,12 +1,11 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai"
 import { StructuredOutputParser } from "langchain/output_parsers";
-import { PromptTemplate } from "langchain/prompts";
-import { RunnableSequence } from "langchain/runnables";
+import { PromptTemplate } from "@langchain/core/prompts";
+import { RunnableSequence } from "@langchain/core/runnables";
 import { z } from "zod"
 
 const parser = StructuredOutputParser.fromZodSchema(
     z.object({
-        sentiment: z.number().describe('sentiment of the text and rated on a scale from -10 to 10, where -10 is extremely negative, 0 is neutral, and 10 is extremely positive.'),
         mood: z
             .string()
             .describe('the mood of the person who wrote the journal entry.'),
@@ -32,5 +31,6 @@ export const analyze_data = async (input) => {
         question: input,
         format_instructions: parser.getFormatInstructions(),
     });
+    console.log(response)
     return response
 } 

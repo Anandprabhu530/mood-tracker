@@ -12,13 +12,12 @@ datasource db {
 }
 
 model User {
-  id        String     @id @default(uuid())
-  email     String     @unique
-  clerkId   String     @unique
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  id        String         @id @default(uuid())
+  email     String         @unique
+  clerkId   String         @unique
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
   entries   Entries[]
-  Analysis  Analysis[]
 }
 
 model Entries {
@@ -29,8 +28,7 @@ model Entries {
   UserId    String
   user      User      @relation(fields: [UserId], references: [id])
   analysis  Analysis?
-
-  @@unique([UserId, id])
+  @@unique([UserId,id])
 }
 
 model Analysis {
@@ -38,16 +36,11 @@ model Analysis {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   entryId   String
-  entry     Entries  @relation(fields: [entryId], references: [id], onDelete: Cascade)
-
-  userId    String
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  mood      String
-  subject   String
-  negative  Boolean
-  summary   String
-  sentiment Float   @default(0)
-
+  entry     Entries  @relation(fields: [entryId], references: [id] ,onDelete: Cascade)
   @@unique([entryId])
-  @@index([userId])
+  mood String
+  subject String
+  negative Boolean
+  summary String
 }
+
