@@ -7,7 +7,7 @@ export const POST = async () => {
     const entry = await prisma.entries.create({
         data: {
             UserId: user?.id as string,
-            content: "Sample Content"
+            content: "Write an article about your day in few lines"
         }
     })
     return NextResponse.json({ data: entry })

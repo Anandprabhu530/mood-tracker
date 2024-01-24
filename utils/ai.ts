@@ -31,6 +31,5 @@ export const analyze_data = async (input) => {
         question: input,
         format_instructions: parser.getFormatInstructions(),
     });
-    console.log(response)
     return response
 } 

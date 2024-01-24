@@ -2,20 +2,26 @@
 import { updateEntry } from "@/utils/createNewEntry";
 import { useState } from "react";
 import { useAutosave } from "react-autosave";
-import { boolean } from "zod";
 
 const EntryEditor = ({ entry }) => {
   const [data, setData] = useState(entry.content);
   const [isLoading, setIsloading] = useState(false);
-  const [realentry, setRealentry] = useState(entry.analysis);
-
+  const [realentry, setRealentry] = useState(
+    entry.analysis
+      ? entry.analysis
+      : {
+          mood: "",
+          subject: "",
+          negative: true,
+          summary: "",
+        }
+  );
   useAutosave({
     data: data,
     onSave: async (_value) => {
       setIsloading(true);
       const newentry = await updateEntry(entry.id, _value);
       setRealentry(newentry);
-      console.log(realentry);
       setIsloading(false);
     },
   });
@@ -23,6 +29,7 @@ const EntryEditor = ({ entry }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="text-4xl pb-10 pl-8 border-b-[1px] ">Your Content</div>
+
       {isLoading && (
         <div className="grid-none pl-8 text-lg pt-8">...Loading</div>
       )}
@@ -37,14 +44,14 @@ const EntryEditor = ({ entry }) => {
             <div className="text-2xl font-semibold  pb-8 border-b-[1px] p-8">
               Analysis of the day
             </div>
-            {/* <div className="text-lg p-8 border-b-[1px]">{`Mood : ${realentry.mood}`}</div>
+            <div className="text-lg p-8 border-b-[1px]">{`Mood : ${realentry.mood}`}</div>
             <div className="text-lg p-8 border-b-[1px]">{`Subject : ${realentry.subject}`}</div>
             <div className="text-lg p-8 border-b-[1px]">
               {`Summary : ${realentry.summary}`}
             </div>
             <div className="text-lg p-8 border-b-[1px]">
               Negative : {realentry.negative ? "True" : "False"}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
