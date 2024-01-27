@@ -31,7 +31,9 @@ const EntryEditor = ({ entry }) => {
       <div className="text-4xl pb-10 pl-8 border-b-[1px] ">Your Content</div>
 
       {isLoading && (
-        <div className="grid-none pl-8 text-lg pt-8">...Loading</div>
+        <div className="absolute top-[10%] grid-none pl-8 text-lg pt-8">
+          ...Loading
+        </div>
       )}
       <div className="w-full h-full grid grid-cols-3">
         <textarea
