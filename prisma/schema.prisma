@@ -42,5 +42,6 @@ model Analysis {
   subject String
   negative Boolean
   summary String @db.Text
+  sentiment Float @default(0)
 }
 
