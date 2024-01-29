@@ -13,7 +13,6 @@ export const updateEntry = async (id, content) => {
 
     if (res.ok) {
         const response = await res.json()
-
         return response.data
     }
 }

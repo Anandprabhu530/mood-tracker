@@ -20,16 +20,21 @@ export const PATCH = async (request: Request, { params }) => {
 
     const analyze = await analyze_data(content)
 
-    const updateddata = await prisma.analysis.upsert({
+    const updateduser = await prisma.analysis.upsert({
         where: {
-            entryId: entryedit.id
+            entryId: entryedit.id,
+        },
+        update: {
+            ...analyze
         },
         create: {
             entryId: entryedit.id,
-            ...analyze,
+            userId: user?.id,
+            ...analyze
+
         },
-        update: { ...analyze }
     })
 
-    return NextResponse.json({ data: { ...analyze, analysis: updateddata } })
+
+    return NextResponse.json({ data: { ...analyze, analysis: updateduser } })
 }

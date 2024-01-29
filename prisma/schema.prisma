@@ -18,6 +18,7 @@ model User {
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
   entries   Entries[]
+  analyses Analysis[]
 }
 
 model Entries {
@@ -37,11 +38,14 @@ model Analysis {
   updatedAt DateTime @default(now())
   entryId   String
   entry     Entries  @relation(fields: [entryId], references: [id] ,onDelete: Cascade)
+  userId String 
+  user User @relation(fields: [userId],references: [id])
   @@unique([entryId])
   mood String
   subject String
   negative Boolean
   summary String @db.Text
   sentiment Float @default(0)
+  @@index([userId])
 }
 
