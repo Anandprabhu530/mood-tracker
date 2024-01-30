@@ -25,7 +25,7 @@ const Dashboard = async () => {
 
   return (
     <div className="font-poppins">
-      <div className="border border-white rounded-xl shadow-xl bg-black grid gap-8 grid-cols-3 p-6">
+      <div className=" rounded-xl shadow-xl bg-black grid gap-8 grid-cols-3 p-6">
         <NewEntry />
         {entries.map((entry) => (
           <Link href={`/dashboard/${entry.id}`} key={entry.id}>

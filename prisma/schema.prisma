@@ -39,7 +39,7 @@ model Analysis {
   entryId   String
   entry     Entries  @relation(fields: [entryId], references: [id] ,onDelete: Cascade)
   userId String 
-  user User @relation(fields: [userId],references: [id])
+  user User @relation(fields: [userId],references: [id], onDelete: Cascade)
   @@unique([entryId])
   mood String
   subject String
