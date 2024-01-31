@@ -24,8 +24,8 @@ const Dashboard = async () => {
   const entries = await getallentry();
 
   return (
-    <div className="font-poppins">
-      <div className=" rounded-xl shadow-xl bg-black grid gap-8 grid-cols-3 p-6">
+    <div className="font-poppins h-full">
+      <div className=" shadow-xl  grid gap-8 grid-cols-3 p-6  h-[95%] overflow-auto bg-[#ffffff] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
         <NewEntry />
         {entries.map((entry) => (
           <Link href={`/dashboard/${entry.id}`} key={entry.id}>

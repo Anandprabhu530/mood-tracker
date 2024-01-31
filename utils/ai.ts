@@ -15,7 +15,7 @@ const parser = StructuredOutputParser.fromZodSchema(
             .describe(
                 'is the journal entry negative? (i.e. does it contain negative emotions?).'
             ),
-        summary: z.string().describe('quick summary of the entire entry.'),
+        summary: z.string().describe('quick summary of the entire entry in just one sentence'),
         sentiment: z.number().describe(
             'sentiment of the text and rated on a scale from -10 to 10, where -10 is extremely negative, 0 is neutral, and 10 is extremely positive.'
         ),
