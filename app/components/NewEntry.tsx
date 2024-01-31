@@ -12,8 +12,8 @@ const NewEntry = () => {
 
   return (
     <div className="w-full h-full " onClick={handleclick}>
-      <div className="border border-white text-2xl text-white flex items-center justify-center rounded-lg px-4 py-2 w-full h-[25%] cursor-pointer">
-        Add New Entry
+      <div className="border border-black bg-[#77bbbb] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 text-2xl text-black font-bold flex items-center justify-center rounded-lg px-4 py-2 w-full cursor-pointer h-[25%]">
+        <div> Add New Entry</div>
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const Dashboard = async () => {
 
   return (
     <div className="font-poppins h-full">
-      <div className=" shadow-xl  grid gap-8 grid-cols-3 p-6  h-[95%] overflow-auto bg-[#ffffff] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
+      <div className=" shadow-xl  grid gap-6 grid-cols-3 p-6  h-[95%] overflow-auto rounded-xl bg-[#ffffff] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
         <NewEntry />
         {entries.map((entry) => (
           <Link href={`/dashboard/${entry.id}`} key={entry.id}>
