@@ -32,17 +32,17 @@ const EntryEditor = ({ entry }) => {
 
       {isLoading && (
         <div className="absolute top-[10%] grid-none pl-8 text-lg pt-8">
-          ...Loading
+          ...Loading...
         </div>
       )}
       <div className="w-full h-full grid grid-cols-3">
         <textarea
-          className="bg-[#2e2e2e] text-white outline-none resize-none text-xl col-span-2 w-full h-[90%] font-poppins m-10 p-8 rounded-xl shadow-xl"
+          className="bg-[#ffffff] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 text-white outline-none resize-none text-xl col-span-2 w-full h-[90%] font-poppins m-10 p-8 rounded-xl shadow-xl"
           value={data}
           onChange={(e) => setData(e.target.value)}
         />
         <div className="border-l-[1px]  ml-[85px]">
-          <div className="flex flex-col">
+          <div className="flex flex-col shadow-xl bg-[#ffffff] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
             <div className="text-2xl font-semibold  pb-8 border-b-[1px] p-8">
               Analysis of the day
             </div>
