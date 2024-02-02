@@ -12,7 +12,7 @@ const EntryEditor = ({ entry }) => {
       : {
           mood: "",
           subject: "",
-          negative: true,
+          negative: null,
           summary: "",
         }
   );
@@ -37,19 +37,19 @@ const EntryEditor = ({ entry }) => {
       )}
       <div className="w-full h-full grid grid-cols-3">
         <textarea
-          className="bg-[#ffffff] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 text-white outline-none resize-none text-xl col-span-2 w-full h-[90%] font-poppins m-10 p-8 rounded-xl shadow-xl"
+          className="bg-[#ffffff] bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50 text-white outline-none resize-none text-xl col-span-2 w-full h-[90%] font-poppins m-10 p-8 rounded-xl shadow-xl"
           value={data}
           onChange={(e) => setData(e.target.value)}
         />
         <div className="border-l-[1px]  ml-[85px]">
           <div className="flex flex-col shadow-xl bg-[#ffffff] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
-            <div className="text-2xl font-semibold  pb-8 border-b-[1px] p-8">
+            <div className="text-2xl font-semibold pb-8 border-b-[1px] p-8">
               Analysis of the day
             </div>
             <div className="text-lg p-8 border-b-[1px]">{`Mood : ${realentry.mood}`}</div>
             <div className="text-lg p-8 border-b-[1px]">{`Subject : ${realentry.subject}`}</div>
             <div className="text-lg p-8 border-b-[1px]">
-              {`Summary : ${realentry.summary}`}
+              {`Summary : ${realentry.summary}`}s
             </div>
             <div className="text-lg p-8 border-b-[1px]">
               Negative : {realentry.negative ? "True" : "False"}
