@@ -1,6 +1,6 @@
 import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser";
-import HistoryChart from "../components/HistoryChart";
+import HistoryChart from "../../components/HistoryChart";
 
 const getdata = async () => {
   const user = await finduserbyIb();
@@ -18,9 +18,9 @@ const getdata = async () => {
 const History = async () => {
   const { allentry, average } = await getdata();
   return (
-    <div className="h-screen w-full ">
-      <div>{`Average Sentiment ${average}`}</div>
-      <div className="h-full  w-full ">
+    <div className="h-full w-full overflow-hidden">
+      <div className="font-bold text-4xl ml-10">{`Average Sentiment Score : ${average}`}</div>
+      <div className="h-full w-full">
         <HistoryChart data={allentry} />
       </div>
     </div>

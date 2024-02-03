@@ -43,7 +43,7 @@ const DashboardLayout = ({ children }) => {
       ),
     },
     {
-      href: "/history",
+      href: "/dashboard/history",
       label: "History",
       svg: (
         <svg
