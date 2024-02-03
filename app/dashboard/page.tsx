@@ -24,7 +24,7 @@ const Dashboard = async () => {
   const entries = await getallentry();
 
   return (
-    <div className="font-poppins h-full">
+    <div className="font-poppins h-full ">
       <div className=" shadow-xl  grid gap-6 grid-cols-3 p-6  h-[95%] overflow-auto rounded-xl bg-[#ffffff] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50">
         <NewEntry />
         {entries.map((entry) => (

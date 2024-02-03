@@ -11,7 +11,6 @@ const CustomTooltip = ({ payload, label, active }) => {
     hour: "numeric",
     minute: "numeric",
   });
-  console.log("payload");
 
   if (active) {
     const analysis = payload[0].payload;

@@ -1,5 +1,6 @@
 import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser"
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const POST = async () => {
@@ -10,5 +11,6 @@ export const POST = async () => {
             content: "Write an article about your day in few lines"
         }
     })
+    revalidatePath('/dashboard')
     return NextResponse.json({ data: entry })
 }

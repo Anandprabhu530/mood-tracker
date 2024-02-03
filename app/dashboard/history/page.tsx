@@ -8,6 +8,7 @@ const getdata = async () => {
     where: {
       userId: user?.id,
     },
+    orderBy: { createdAt: "asc" },
   });
 
   const sum = allentry.reduce((all, current) => all + current.sentiment, 0);

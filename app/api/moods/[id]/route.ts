@@ -1,6 +1,7 @@
 import { analyze_data } from "@/utils/ai";
 import { prisma } from "@/utils/db";
 import { finduserbyIb } from "@/utils/finduser"
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const PATCH = async (request: Request, { params }) => {
@@ -17,8 +18,10 @@ export const PATCH = async (request: Request, { params }) => {
             content,
         }
     })
-
+    revalidatePath('/dashboard')
     const analyze = await analyze_data(content)
+    revalidatePath('/dashboard')
+
 
     const updateduser = await prisma.analysis.upsert({
         where: {
@@ -35,6 +38,7 @@ export const PATCH = async (request: Request, { params }) => {
         },
     })
 
+    revalidatePath('/dashboard')
 
     return NextResponse.json({ data: { ...analyze, analysis: updateduser } })
 }
